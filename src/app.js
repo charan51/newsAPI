@@ -11,9 +11,11 @@ const authHandler = require("./middleware/auth.middleware");
 const errorHandler = require("./middleware/error.middleware");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("v1/api//news", authHandler, newsRoute);
-app.use("v1/api/user", userRoute);
+app.use("/news", authHandler, newsRoute);
+app.use("/user", userRoute);
 app.use(errorHandler);
 app.listen(process.env.PORT, () => {
   console.log("app runninng on port", process.env.PORT);
 });
+
+module.exports = app;
